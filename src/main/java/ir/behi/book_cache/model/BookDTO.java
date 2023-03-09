@@ -1,4 +1,4 @@
-package com.example.demo2_7_2.model;
+package ir.behi.book_cache.model;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package com.example.demo2_7_2.controller;
+package ir.behi.book_cache.controller;
 
-import com.example.demo2_7_2.service.BookService;
+import ir.behi.book_cache.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

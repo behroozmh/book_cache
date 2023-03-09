@@ -1,6 +1,6 @@
-package com.example.demo2_7_2.dao;
+package ir.behi.book_cache.dao;
 
-import com.example.demo2_7_2.entity.Book;
+import ir.behi.book_cache.entity.Book;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

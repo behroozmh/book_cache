@@ -1,8 +1,8 @@
-package com.example.demo2_7_2.service;
+package ir.behi.book_cache.service;
 
-import com.example.demo2_7_2.dao.BookDAO;
-import com.example.demo2_7_2.entity.Book;
-import com.example.demo2_7_2.model.BookDTO;
+import ir.behi.book_cache.dao.BookDAO;
+import ir.behi.book_cache.entity.Book;
+import ir.behi.book_cache.model.BookDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

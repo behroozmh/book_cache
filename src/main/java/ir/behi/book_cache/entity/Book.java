@@ -1,4 +1,4 @@
-package com.example.demo2_7_2.entity;
+package ir.behi.book_cache.entity;
 
 import lombok.Data;
 
