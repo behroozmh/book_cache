@@ -30,4 +30,9 @@ public class BookController {
         return ResponseEntity.ok(bookService.addOrUpdate(book));
     }
 
+    @DeleteMapping(value = "/delete")
+    public ResponseEntity delete(@RequestParam(defaultValue = "-1") Integer id) {
+        bookService.delete(id);
+        return ResponseEntity.ok(true);
+    }
 }
