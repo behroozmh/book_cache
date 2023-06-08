@@ -7,6 +7,7 @@ import java.util.UUID;
 
 @Data
 public class BookDTO {
+    private Integer id;
     private String name;
     private String enName;
     private String isbn;
