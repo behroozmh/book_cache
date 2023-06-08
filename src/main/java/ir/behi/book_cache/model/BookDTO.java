@@ -1,11 +1,14 @@
 package ir.behi.book_cache.model;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookDTO {
     private Integer id;
     private String name;
