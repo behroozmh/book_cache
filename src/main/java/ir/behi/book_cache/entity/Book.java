@@ -1,18 +1,20 @@
 package ir.behi.book_cache.entity;
 
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
-@Data
 @Entity(name = "Book")
 @Table(name = "Book")
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_book")
+    @SequenceGenerator(name = "seq_book", allocationSize = 1)
     private Integer id;
     private String name;
     private String enName;
