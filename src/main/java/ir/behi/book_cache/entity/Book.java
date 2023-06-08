@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "Book")
@@ -23,4 +24,9 @@ public class Book {
     private Date printDate;
     private Integer version;
     private String publisher;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id",referencedColumnName = "id")
+    private Category category;
+
 }
