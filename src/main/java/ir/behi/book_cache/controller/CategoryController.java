@@ -1,19 +1,19 @@
 package ir.behi.book_cache.controller;
 
-import ir.behi.book_cache.model.BookDTO;
-import ir.behi.book_cache.service.BookService;
+import ir.behi.book_cache.model.CategoryDTO;
+import ir.behi.book_cache.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/book")
-public class BookController {
+@RequestMapping(value = "/category")
+public class CategoryController {
 
-    public BookController(BookService bookService) {
-        this.service = bookService;
+    public CategoryController(CategoryService categoryService) {
+        this.service = categoryService;
     }
 
-    private BookService service;
+    private CategoryService service;
 
     @GetMapping(value = "/getList")
     public ResponseEntity getList() {
@@ -26,7 +26,7 @@ public class BookController {
     }
 
     @PostMapping(value = "/addOrUpdate")
-    public ResponseEntity addOrUpdate(@RequestBody BookDTO dto) {
+    public ResponseEntity addOrUpdate(@RequestBody CategoryDTO dto) {
         return ResponseEntity.ok(service.addOrUpdate(dto));
     }
 
