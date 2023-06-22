@@ -1,15 +1,18 @@
 package ir.behi.book_cache.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "Book")
 @Table(name = "Book")
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
@@ -26,7 +29,7 @@ public class Book {
     private String publisher;
 
     @ManyToOne
-    @JoinColumn(name = "category_id",referencedColumnName = "id")
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
 }

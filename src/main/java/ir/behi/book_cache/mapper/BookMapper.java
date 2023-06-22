@@ -9,33 +9,33 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface BookMapper {
-    Book ToEntity(BookDTO model);
+    Book toEntity(BookDTO model);
 
-    BookDTO ToDTO(Book entity);
+    BookDTO toDTO(Book entity);
 
-    default List<Book> ToEntities(List<BookDTO> models) {
-        if (models != null & models.size() > 0) {
+    default List<Book> toEntities(List<BookDTO> models) {
+        if (models != null && models.isEmpty()) {
             List<Book> entities = new ArrayList<>();
             for (BookDTO model : models)
-                entities.add(ToEntity(model));
+                entities.add(toEntity(model));
             return entities;
         } else return new ArrayList<>();
     }
 
-    default List<BookDTO> ToDTOs(List<Book> entities) {
-        if (entities != null & entities.size() > 0) {
+    default List<BookDTO> toDTOs(List<Book> entities) {
+        if (entities != null && entities.isEmpty()) {
             List<BookDTO> models = new ArrayList<>();
             for (Book entity : entities)
-                models.add(ToDTO(entity));
+                models.add(toDTO(entity));
             return models;
         } else return new ArrayList<>();
     }
 
-    default List<BookDTO> ToDTOs(Iterable<Book> entities) {
-        if (entities != null & entities.iterator().hasNext()) {
+    default List<BookDTO> toDTOs(Iterable<Book> entities) {
+        if (entities != null && entities.iterator().hasNext()) {
             List<BookDTO> models = new ArrayList<>();
             for (Book entity : entities)
-                models.add(ToDTO(entity));
+                models.add(toDTO(entity));
             return models;
         } else return new ArrayList<>();
     }
