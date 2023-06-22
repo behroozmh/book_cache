@@ -32,7 +32,11 @@ public class BookController {
 
     @DeleteMapping(value = "/delete")
     public ResponseEntity delete(@RequestParam(defaultValue = "-1") Integer id) {
-        service.delete(id);
+        try {
+            service.delete(id);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         return ResponseEntity.ok(true);
     }
 }
