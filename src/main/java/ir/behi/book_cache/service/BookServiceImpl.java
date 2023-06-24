@@ -49,12 +49,12 @@ public class BookServiceImpl implements BookService {
         return bookMapper.toDTOs(bookDAO.findAll());
     }
 
-    @Cacheable(value = "book")
+    @Cacheable(value = "book",key="#id")
     @Override
     public BookDTO get(Integer id) {
         Optional<Book> book = bookDAO.findById(id);
         if (book.isPresent()) return bookMapper.toDTO(book.get());
-        else return null;
+        else return new BookDTO();
     }
 
     @Caching(put = {@CachePut(value = "book", key = "#book.id")},
@@ -65,7 +65,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Caching(evict = {
-            @CacheEvict(value = "book", key = "#book.id"),
+            @CacheEvict(value = "book", key = "#id"),
             @CacheEvict(value = "books", allEntries = true)
     }
     )
