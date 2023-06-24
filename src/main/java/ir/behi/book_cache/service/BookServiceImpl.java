@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
     private final BookMapper bookMapper;
     private final CacheManager cacheManager;
 
-    @Cacheable(value = "books")
+    @Cacheable(value = "books", key = "#id")
     @Override
     public List<BookDTO> getList() {
         if (log.isDebugEnabled()) {
@@ -49,7 +49,7 @@ public class BookServiceImpl implements BookService {
         return bookMapper.toDTOs(bookDAO.findAll());
     }
 
-    @Cacheable(value = "book", key = "#id")
+    @Cacheable(value = "book")
     @Override
     public BookDTO get(Integer id) {
         Optional<Book> book = bookDAO.findById(id);
