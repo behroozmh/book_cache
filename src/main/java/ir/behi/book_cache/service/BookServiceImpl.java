@@ -33,7 +33,7 @@ public class BookServiceImpl implements BookService {
     private final BookMapper bookMapper;
     private final CacheManager cacheManager;
 
-    @Cacheable(value = "books", key = "#id")
+    @Cacheable(value = "books")
     @Override
     public List<BookDTO> getList() {
         if (log.isDebugEnabled()) {
