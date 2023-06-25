@@ -5,6 +5,8 @@ import ir.behi.book_cache.service.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/book")
 public class BookController {
@@ -13,26 +15,30 @@ public class BookController {
         this.service = bookService;
     }
 
-    private BookService service;
+    private final BookService service;
 
     @GetMapping(value = "/getList")
-    public ResponseEntity getList() {
+    public ResponseEntity<List<BookDTO>> getList() {
         return ResponseEntity.ok(service.getList());
     }
 
     @GetMapping(value = "/get")
-    public ResponseEntity get(@RequestParam(defaultValue = "-1") Integer id) {
+    public ResponseEntity<BookDTO> get(@RequestParam(defaultValue = "-1") Integer id) {
         return ResponseEntity.ok(service.get(id));
     }
 
     @PostMapping(value = "/addOrUpdate")
-    public ResponseEntity addOrUpdate(@RequestBody BookDTO dto) {
+    public ResponseEntity<BookDTO> addOrUpdate(@RequestBody BookDTO dto) {
         return ResponseEntity.ok(service.addOrUpdate(dto));
     }
 
     @DeleteMapping(value = "/delete")
-    public ResponseEntity delete(@RequestParam(defaultValue = "-1") Integer id) {
-        service.delete(id);
+    public ResponseEntity<Boolean> delete(@RequestParam(defaultValue = "-1") Integer id) {
+        try {
+            service.delete(id);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         return ResponseEntity.ok(true);
     }
 }

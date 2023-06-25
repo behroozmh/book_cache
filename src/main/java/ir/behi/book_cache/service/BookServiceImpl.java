@@ -43,29 +43,29 @@ public class BookServiceImpl implements BookService {
                 return (List<BookDTO>) cache.get("books");
             } else {
                 log.debug("load from database");
-                return bookMapper.ToDTOs(bookDAO.findAll());
+                return bookMapper.toDTOs(bookDAO.findAll());
             }
         }
-        return bookMapper.ToDTOs(bookDAO.findAll());
+        return bookMapper.toDTOs(bookDAO.findAll());
     }
 
-    @Cacheable(value = "book", key = "#id")
+    @Cacheable(value = "book",key="#id")
     @Override
     public BookDTO get(Integer id) {
         Optional<Book> book = bookDAO.findById(id);
-        if (book.isPresent()) return bookMapper.ToDTO(book.get());
-        else return null;
+        if (book.isPresent()) return bookMapper.toDTO(book.get());
+        else return new BookDTO();
     }
 
     @Caching(put = {@CachePut(value = "book", key = "#book.id")},
             evict = {@CacheEvict(value = "books", allEntries = true)})
     @Override
     public BookDTO addOrUpdate(BookDTO book) {
-        return bookMapper.ToDTO(bookDAO.save(bookMapper.ToEntity(book)));
+        return bookMapper.toDTO(bookDAO.save(bookMapper.toEntity(book)));
     }
 
     @Caching(evict = {
-            @CacheEvict(value = "book", key = "#book.id"),
+            @CacheEvict(value = "book", key = "#id"),
             @CacheEvict(value = "books", allEntries = true)
     }
     )
